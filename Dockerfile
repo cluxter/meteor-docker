@@ -1,5 +1,9 @@
-FROM base/archlinux
+FROM ubuntu:16.04
 MAINTAINER Baptiste Rebillard aka. cluxter <contact@cluxter.org>
+
+# Let's install 'curl' first so we can download the Meteor package
+RUN apt-get install curl
+
 
 # This script will install the Meteor binary installer (called the launchpad) in /usr/local and consequently requires to be root.
 # Then, when we will run the "meteor" command later on for the first time, it will call the launchpad that will copy the Meteor binaries in ~/.meteor.
