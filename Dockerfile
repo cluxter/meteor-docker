@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM base/archlinux
 MAINTAINER Baptiste Rebillard aka. cluxter <contact@cluxter.org>
 
 # This script will install the Meteor binary installer (called the launchpad) in /usr/local and consequently requires to be root.
