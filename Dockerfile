@@ -43,4 +43,4 @@ ONBUILD USER meteor
 
 # When we will run the image of our app, we simply want to run the "meteor" command.
 # Consequently all the data will be kept in the current container of our app and will be destroyed when the container will be removed.
-CMD cd /home/meteor/app && meteor
+CMD cd /home/meteor/app && meteor --production
