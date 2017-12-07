@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Baptiste Rebillard aka. cluxter <contact@cluxter.org>
 
 # Let's install 'curl' first so we can download the Meteor package
-RUN apt-get install curl
+RUN apt-get install php5-curl
 
 
 # This script will install the Meteor binary installer (called the launchpad) in /usr/local and consequently requires to be root.
