@@ -34,7 +34,7 @@ ONBUILD USER root
 ONBUILD RUN chown -R meteor:meteor /home/meteor/app
 
 # ...clean the Meteor cache for a clean image...
-ONBUILD RUN rm -R /home/meteor/app/.meteor/local/*
+ONBUILD RUN rm -rf /home/meteor/app/.meteor/local/*
 
 # ...and go back to the "meteor" account again so Meteor will run as the "meteor" user.
 ONBUILD USER meteor
