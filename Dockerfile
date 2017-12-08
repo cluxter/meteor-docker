@@ -1,8 +1,9 @@
-FROM ubuntu:16.04
+FROM base/archlinux:latest
 MAINTAINER Baptiste Rebillard aka. cluxter <contact@cluxter.org>
 
-# Let's install 'curl' first so we can download the Meteor package
-RUN apt-get update -y && apt-get install curl -y
+# Meteor requires at least one valid locale to be able to run
+# For more details see: https://github.com/meteor/meteor/issues/4019
+RUN (printf "\nen_US.UTF-8 UTF-8\n" >> /etc/locale.gen) && (/usr/bin/locale-gen)
 
 
 # This script will install the Meteor binary installer (called the launchpad) in /usr/local and consequently requires to be root.
