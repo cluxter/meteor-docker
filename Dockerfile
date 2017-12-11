@@ -5,12 +5,10 @@ MAINTAINER Baptiste Rebillard aka. cluxter <contact@cluxter.org>
 # For more details see: https://github.com/meteor/meteor/issues/4019
 RUN (printf "\nen_US.UTF-8 UTF-8\n" >> /etc/locale.gen) && (/usr/bin/locale-gen)
 
-
 # This script will install the Meteor binary installer (called the launchpad) in /usr/local and consequently requires to be root.
 # Then, when we will run the "meteor" command later on for the first time, it will call the launchpad that will copy the Meteor binaries in ~/.meteor.
 # This way every user can run Meteor under the user space.
 RUN curl https://install.meteor.com/ | sh
-
 
 # We now add a "meteor" user that will be used to avoid running Meteor with root privileges.
 RUN useradd -m -G users -s /bin/bash meteor
@@ -46,6 +44,10 @@ ONBUILD USER meteor
 
 
 
+# We expose port 3000 since Meteor runs as a Node.js application
+EXPOSE 3000
+
 # When we will run the image of our app, we simply want to run the "meteor" command.
 # Consequently all the data will be kept in the current container of our app and will be destroyed when the container will be removed.
 CMD cd /home/meteor/app && meteor --production
+
